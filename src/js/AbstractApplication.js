@@ -1,18 +1,17 @@
-import "three"
 import 'three/examples/js/controls/OrbitControls'
 
 class AbstractApplication {
-  constructor() {
-    this._camera = new THREE.PerspectiveCamera(70, window.innerWidth/window.innerHeight, 1, 1000)
+  constructor () {
+    this._camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000)
     this._camera.position.z = 400
 
     this._scene = new THREE.Scene()
     this._renderer = new THREE.WebGLRenderer()
     this._renderer.setPixelRatio(window.devicePixelRatio)
     this._renderer.setSize(window.innerWidth, window.innerHeight)
-    document.appendChild(this._renderer.domElement)
+    document.body.appendChild(this._renderer.domElement)
 
-    this._controls = new THREE.OrbitControls( this._camera, this._renderer.domElement );
+    this._controls = new THREE.OrbitControls(this._camera, this._renderer.domElement)
 
     this._timeout_window_resize = null
     window.addEventListener('resize', this.onWindowResize.bind(this), false)
@@ -44,7 +43,6 @@ class AbstractApplication {
     requestAnimationFrame(this.animate.bind(this))
     this._renderer.render(this._scene, this._camera)
   }
-
 }
 
 export default AbstractApplication

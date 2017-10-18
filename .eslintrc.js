@@ -12,6 +12,9 @@ module.exports = {
   env: {
     browser: true,
   },
+  globals: {
+    'THREE': true
+  },
   plugins: [
     'html'
   ],

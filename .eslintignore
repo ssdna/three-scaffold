@@ -1,4 +1,4 @@
-build/*.js
+dist/*.js
 config/*.js
-app/js/*.min.js
+app/lib/*.min.js
 *min.js
