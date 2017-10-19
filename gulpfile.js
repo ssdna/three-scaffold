@@ -9,6 +9,7 @@ const concat = require('gulp-concat')
 const rename = require('gulp-rename')
 const changed = require('gulp-changed')
 const plumber = require('gulp-plumber')
+const htmlmin = require('gulp-htmlmin')
 const imagemin = require('gulp-imagemin')
 const cleanCSS = require('gulp-clean-css')
 const cssimport = require('gulp-cssimport')
@@ -28,8 +29,8 @@ const assign = require('lodash.assign')
  */
 const paths = {
   images: 'src/textures/**/*',
-  html: './src/index.html',
-  css: './src/css/*.css',
+  html: 'src/index.html',
+  css: 'src/css/*.css',
   js: ['src/**/*.js'],
   staticResources: [
     'src/lib/**',
@@ -132,7 +133,7 @@ gulp.task('image', ['clean'], function () {
 /**
  * css task, del & move index.html
  */
-gulp.task('css', ['clean'], () => {
+gulp.task('css', () => {
   const isDev = (options.env === 'development')
   const dest = isDev ? options.devDest : options.prodDest
   return gulp.src(paths.css)
@@ -158,6 +159,7 @@ gulp.task('html', () => {
   return gulp.src(paths.html)
     .pipe(plumber())
     .pipe(changed(dest))
+    .pipe(gulpif(!isDev, htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest(dest))
 })
 

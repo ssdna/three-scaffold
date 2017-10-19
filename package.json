@@ -29,6 +29,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-cssimport": "^6.0.0",
     "gulp-eslint": "^4.0.0",
+    "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.4.0",
     "gulp-mocha": "^4.3.1",
