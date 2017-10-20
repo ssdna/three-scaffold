@@ -3,9 +3,9 @@ import 'three/examples/js/controls/OrbitControls'
 class AbstractApplication {
   constructor () {
     this._camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 4000)
-    this._camera.position.z = 500
-    this._camera.position.x = -600
-    this._camera.position.y = 400
+    this._camera.position.z = 700
+    this._camera.position.x = -300
+    this._camera.position.y = 200
 
     this._scene = new THREE.Scene()
     this._renderer = new THREE.WebGLRenderer({

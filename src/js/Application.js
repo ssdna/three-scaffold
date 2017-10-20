@@ -1,4 +1,8 @@
 import AbstractApplication from './AbstractApplication'
+import Cube from '../models/Cube'
+import Forest from '../models/Forest'
+import Mountain from '../models/Mountain'
+import Cloud from '../models/Cloud'
 
 class Application extends AbstractApplication {
   constructor () {
@@ -13,8 +17,12 @@ class Application extends AbstractApplication {
     // this._mesh = new THREE.Mesh(geometry, material)
     // this._scene.add(this._mesh)
 
+    // this.createCube()
     this.createLights()
     this.createFloor()
+    this.createTree()
+    this.createMountain()
+    this.createCloud()
 
     this.animate()
   }
@@ -88,8 +96,7 @@ class Application extends AbstractApplication {
       mods.push(modVector)
     }
     let midY = 0
-    console.log(midY)
-
+    // console.log(midY)
     for (let i = 0; i < islandGeo.vertices.length; i++) {
       let vertex = islandGeo.vertices[i]
       // if(vertex.distanceTo(zeroVector) < 300)
@@ -129,6 +136,47 @@ class Application extends AbstractApplication {
     this._env.add(island)
 
     this._scene.add(this._env)
+  }
+
+  createCube () {
+    const cube = new Cube()
+    this._scene.add(cube.threegroup)
+  }
+
+  createTree () {
+    const forest = new Forest(Math.random() * 20 + 10, new THREE.Vector3(0, 0, 0), 700)
+    forest.addTo(this)
+    this._env.add(forest.threegroup)
+
+    const extraForests = Math.floor(Math.random() * 15)
+    for (let i = 0; i < extraForests; i++) {
+      const forest = new Forest(Math.random() * 100, new THREE.Vector3(Math.random() * 500 - 250, 0, Math.random() * 500 - 250), Math.random() * 300)
+      forest.addTo(this)
+      this._env.add(forest.threegroup)
+    }
+  }
+
+  createMountain () {
+    // const num = Math.floor(Math.random() * 5 - 2)
+    const num = 1
+    console.log('Mountain: ', num)
+
+    for (let i = 0; i < num; i++) {
+      const mountain = new Mountain()
+      this._env.add(mountain.threegroup)
+      mountain.threegroup.position.x = Math.random() * 600 - 350
+      mountain.threegroup.position.z = Math.random() * 600 - 350
+      mountain.threegroup.position.y = 30
+    }
+  }
+
+  createCloud () {
+    let num = 1 + Math.floor(Math.random() * 5)
+    console.log('Cloud: ', num)
+    for (let i = 0; i < num; i++) {
+      const c = new Cloud()
+      this._env.add(c.threegroup)
+    }
   }
 }
 

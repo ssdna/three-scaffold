@@ -4,8 +4,7 @@ const a = new Application()
 a.sss = function () {
   console.log(322)
 }
-a.sss()
-a.sss()
+
 a.sss()
 
 export default a

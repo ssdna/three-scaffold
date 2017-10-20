@@ -215,7 +215,8 @@ gulp.task('development', (done) => {
  * dev task
  */
 gulp.task('dev', ['development', 'browser-sync', 'copy', 'image', 'css'], (done) => {
-  gutil.log(gutil.colors.cyan('Development Mode'))
+  gutil.log(gutil.colors.cyan('Development Mode'), ' starting...')
+  done()
 })
 
 /**
