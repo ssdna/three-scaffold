@@ -1,7 +1,11 @@
 import 'three/examples/js/controls/OrbitControls'
+import Stats from 'three/examples/js/libs/stats.min.js'
+import dat from 'three/examples/js/libs/dat.gui.min.js'
 
 class AbstractApplication {
-  constructor () {
+  constructor (debug) {
+    this.debug = debug
+
     this._camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 4000)
     this._camera.position.z = 700
     this._camera.position.x = -300
@@ -15,6 +19,19 @@ class AbstractApplication {
     this._renderer.setPixelRatio(window.devicePixelRatio)
     this._renderer.setSize(window.innerWidth, window.innerHeight)
     document.body.appendChild(this._renderer.domElement)
+
+    if (this.debug) {
+      this._gui = new dat.GUI()
+
+      this._stats = new Stats()
+      document.body.appendChild(this._stats.dom)
+
+      const gridHelper = new THREE.GridHelper(1000, 20)
+      this._scene.add(gridHelper)
+
+      const axisHelper = new THREE.AxisHelper(500)
+      this._scene.add(axisHelper)
+    }
 
     this._controls = new THREE.OrbitControls(this._camera, this._renderer.domElement)
 
@@ -46,7 +63,14 @@ class AbstractApplication {
 
   animate (timestamp) {
     requestAnimationFrame(this.animate.bind(this))
+
+    if (this.debug) {
+      this._stats.begin()
+    }
     this._renderer.render(this._scene, this._camera)
+    if (this.debug) {
+      this._stats.end()
+    }
   }
 }
 

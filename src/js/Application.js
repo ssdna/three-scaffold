@@ -5,8 +5,8 @@ import Mountain from '../models/Mountain'
 import Cloud from '../models/Cloud'
 
 class Application extends AbstractApplication {
-  constructor () {
-    super()
+  constructor (debug) {
+    super(debug)
 
     this._scene.fog = new THREE.Fog(0xece9ca, 500, 4000)
     this._raycaster = new THREE.Raycaster()
@@ -24,7 +24,19 @@ class Application extends AbstractApplication {
     this.createMountain()
     this.createCloud()
 
+    if (this.debug) {
+      this.initGUI()
+    }
+
     this.animate()
+  }
+
+  initGUI () {
+    const API = {
+      mountainX: 100
+    }
+
+    this._gui.add(API, 'mountainX')
   }
 
   createLights () {
