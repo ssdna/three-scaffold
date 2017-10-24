@@ -9,6 +9,7 @@
   "author": "DNA",
   "license": "ISC",
   "devDependencies": {
+    "axios": "^0.17.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
     "babel-preset-env": "^1.6.0",
@@ -40,6 +41,7 @@
     "gulp-util": "^3.0.8",
     "lodash.assign": "^4.2.0",
     "mocha": "^4.0.1",
+    "mockjs": "^1.0.1-beta3",
     "stringify": "^5.1.0",
     "three": "^0.87.1",
     "vinyl-buffer": "^1.0.0",

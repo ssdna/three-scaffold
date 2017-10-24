@@ -107,8 +107,10 @@ class Application extends AbstractApplication {
       modVector.dir = Math.random() * 1 - 0.6 + modVector.radius / 5000
       mods.push(modVector)
     }
+
     let midY = 0
-    // console.log(midY)
+    console.warn('no unused vars: midY = ' + midY)
+
     for (let i = 0; i < islandGeo.vertices.length; i++) {
       let vertex = islandGeo.vertices[i]
       // if(vertex.distanceTo(zeroVector) < 300)

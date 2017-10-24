@@ -49,7 +49,7 @@ class Mountain {
     })
 
     // const rnd1 = Math.random() * 40 + 30 - (35)
-    const rnd2 = Math.random() * 10 + 10 - 5
+    // const rnd2 = Math.random() * 10 + 10 - 5
 
     // TweenMax.to(this.threegroup.position, 12 + Math.random() * 10, {
     //   repeat: -1,
